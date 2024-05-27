@@ -159,19 +159,19 @@ async function runSmokeTest() {
         .build();
 
     try {
-        await driver.get('https://frongrupotrfinal-production.up.railway.app');
+        await driver.get('https://frongrupotrfinal-production.up.railway.app/');
         await driver.wait(until.elementLocated(By.css('body')), 10000);
         await login(driver);
         await handleAlertLogin(driver);
-        await driver.get('https://frongrupotrfinal-production.up.railway.app');
+        await driver.get('https://frongrupotrfinal-production.up.railway.app/');
         await driver.wait(until.elementLocated(By.css('body')), 10000);
         await RegistroExistente(driver);
         await handleAlertRegistroExistente(driver);
-        await driver.get('https://frongrupotrfinal-production.up.railway.app');
+        await driver.get('https://frongrupotrfinal-production.up.railway.app/');
         await driver.wait(until.elementLocated(By.css('body')), 10000);
         await Registro(driver);
         await handleAlertRegistro(driver);
-        await driver.get('https://frongrupotrfinal-production.up.railway.app');
+        await driver.get('https://frongrupotrfinal-production.up.railway.app/');
         await driver.wait(until.elementLocated(By.css('body')), 10000);
         await loginExiste(driver);
         await handleAlertLoginExiste(driver);
