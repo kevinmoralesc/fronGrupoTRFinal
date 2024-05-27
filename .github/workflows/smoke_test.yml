@@ -42,4 +42,4 @@ jobs:
         run: google-chrome --version
 
       - name: Crear y ejecutar prueba de humo
-        run: node smoke_test.js
+        run: node ./src/smoke_test.js
