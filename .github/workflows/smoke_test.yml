@@ -1,0 +1,45 @@
+name: Prueba de Humo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v2
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Descargar y configurar Chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb
+          sudo apt-get install -f
+          google-chrome --version
+
+      - name: Descargar y configurar ChromeDriver versión 125
+        run: |
+          wget https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.60/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          chmod +x chromedriver-linux64/chromedriver
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+
+      - name: Instalar dependencias
+        run: npm install selenium-webdriver
+
+      - name: Verificar versión de ChromeDriver
+        run: chromedriver --version
+
+      - name: Verificar instalación de Chrome
+        run: google-chrome --version
+
+      - name: Crear y ejecutar prueba de humo
+        run: node smoke_test.js
