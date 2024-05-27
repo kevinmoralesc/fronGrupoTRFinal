@@ -13,7 +13,7 @@ export const setAuthHeader = (token) => {
     }
 };
 
-axios.defaults.baseURL = 'https://frongrupotrfinal-production.up.railway.app/';
+axios.defaults.baseURL = 'https://backpruebashumo-production.up.railway.app/';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const request = (method, url, data) => {
